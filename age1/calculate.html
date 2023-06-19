@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+    <link rel="stylesheet" href="mystyle.css">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+     <link rel="icon" href="/static/logo1.png">
+  <title>AGELY</title>
+		  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script>
+ 
+        function ageCalculator() {  
+       
+               var div = document.getElementById("submit");
+                   if (div.style.display !== "none") {
+                       div.style.display = "none";
+                   }
+                   else {
+                       div.style.display = "block";
+                   }
+       
+           var userinput = document.getElementById("DOB").value;  
+           var dob = new Date(userinput);  
+           var d = new Date();
+          //  window.print(d,d.getFullYear(),d.getDate(),d.getMonth())
+           if(userinput==null || userinput=='') {  
+             document.getElementById("message").innerHTML = "**Choose a date please!";    
+             return false;   
+           } else {  
+              if (d.getFullYear() >=dob.getFullYear()) {
+                if (d.getMonth()>=dob.getMonth()) {
+                  if (d.getDate() >=dob.getDate()) {
+                    //calculate month difference from current date in time  
+                    var month_diff = Date.now() - dob.getTime();  
+                      
+                      //convert the calculated difference in date format  
+                      var age_dt = new Date(month_diff);   
+                        
+                      //extract year from date      
+                      var year = age_dt.getUTCFullYear();  
+                        
+                      //now calculate the age of the user  
+                      var age = Math.abs(year - 1970);  
+                        
+                      
+                      //display the calculated age  
+                      return document.getElementById("result").innerHTML =    
+                                "Congratulations You Are " + age + " 🎉 ";  
+                      } else{
+                        return document.getElementById("result").innerHTML =    
+                                "** ERROR IN DOB **"; 
+                      }  
+                  } else{
+                    return document.getElementById("result").innerHTML =    
+                                "** ERROR IN DOB **"; 
+                  } 
+                  } else{
+                    return document.getElementById("result").innerHTML =    
+                                "** ERROR IN DOB **"; 
+                }
+            }
+           
+       }  
+           </script>
+		</head>
+	  
+		<body>
+		  <input type="checkbox" id="active">
+		  <label for="active" class="menu-btn"><i class="fa fa-bars"></i></label>
+		  <div class="wrapper">
+			<ul>
+	  <li><a href="home.html">Home</a></li>
+</ul>
+	  </div>
+	  <div class="login-box content">
+        <h2>Enter DOB</h2>
+        <form action="#" method="POST">
+          <div class="user-box">
+            <input type="date" name="dob" id=DOB required="">
+          </div>
+          <a href="" onclick="ageCalculator(); return false;" id="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+        </form>
+       
+        <h2 id="result" align="center" style="color:#03e9f4;"></h2>
+        
+      </div> 
+       
+	  </body>
+	  
+</html>
